@@ -1,3 +1,3 @@
 from django.db import models
 
-# Create your model
+# Create your mode
