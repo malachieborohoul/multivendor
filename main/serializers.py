@@ -17,5 +17,5 @@ class ProductSerializer(serializers.ModelSerializer):
         fields =['category', 'vendor','title','detail','price']
         
     def __init__(self, *args, **kwargs):
-        super(VendorSerializer,self).__init__(*args, **kwargs)
+        super(ProductSerializer,self).__init__(*args, **kwargs)
         self.Meta.depth=1
