@@ -13,3 +13,13 @@ class ProductCategory(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+# Product
+
+class Product(models.Model):
+    title = models.CharField(max_length=200)
+    detail = models.TextField(null=True)
+    price= models.FloatField()
+
+    def __str__(self) -> str:
+        return self.title
