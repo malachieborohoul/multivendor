@@ -18,7 +18,6 @@ class ProductCategory(models.Model):
         return self.title
     
 # Product
-
 class Product(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, null=True)
     vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
