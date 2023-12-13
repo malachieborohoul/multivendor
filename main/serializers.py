@@ -23,8 +23,8 @@ class ProductSerializer(serializers.ModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Customer
-        fields =['user', 'mobile']
+        fields =['id','user', 'mobile']
         
     def __init__(self, *args, **kwargs):
         super(CustomerSerializer,self).__init__(*args, **kwargs)
-        # self.Meta.depth=1 
+        self.Meta.depth=1 
