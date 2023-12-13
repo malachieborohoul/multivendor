@@ -9,5 +9,12 @@ urlpatterns=[
     path('products/<int:pk>/',views.ProductDetail.as_view() ),
     # Customers
     path('customers/',views.CustomerList.as_view() ),
-    path('customers/<int:pk>/',views.CustomerDetail.as_view() )
+    path('customers/<int:pk>/',views.CustomerDetail.as_view() ),
+    # Order
+    path('orders/',views.OrderList.as_view() ),
+    path('orders/<int:pk>/',views.OrderDetail.as_view() ),
+
+    # OrderItem
+    path('order-items/',views.OrderItemList.as_view() ),
+    path('order-items/<int:pk>/',views.OrderItemDetail.as_view() )
 ]
