@@ -28,3 +28,14 @@ class Product(models.Model):
     def __str__(self) -> str:
         return self.title
     
+# Customer Model
+class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mobile = models.PositiveBigIntegerField()
+    def __str__(self) -> str:
+        return self.user.username
+# Order Model
+
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
