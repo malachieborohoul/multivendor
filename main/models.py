@@ -37,5 +37,16 @@ class Customer(models.Model):
 # Order Model
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    order_time = models.DateTimeField(auto_now_add=True)
+    
+
+# OrderItem Model
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.product.title
+    
