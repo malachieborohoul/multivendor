@@ -28,3 +28,22 @@ class CustomerSerializer(serializers.ModelSerializer):
     def __init__(self, *args, **kwargs):
         super(CustomerSerializer,self).__init__(*args, **kwargs)
         self.Meta.depth=1 
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Customer
+        fields =['id','customer', 'order_time']
+        
+    def __init__(self, *args, **kwargs):
+        super(OrderSerializer,self).__init__(*args, **kwargs)
+        self.Meta.depth=1 
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Customer
+        fields =['id','order', 'product']
+        
+    def __init__(self, *args, **kwargs):
+        super(OrderItemSerializer,self).__init__(*args, **kwargs)
+        self.Meta.depth=1 
