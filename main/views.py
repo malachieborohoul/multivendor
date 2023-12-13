@@ -39,3 +39,25 @@ class CustomerList(generics.ListCreateAPIView):
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Customer.objects.all()
     serializer_class = serializers.CustomerSerializer
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = models.Order.objects.all()
+    serializer_class = serializers.OrderItemSerializer
+
+    def perform_create(self, serializer):
+        return super().perform_create(serializer)
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Order.objects.all()
+    serializer_class = serializers.OrderItemSerializer
+
+class OrderItemList(generics.ListCreateAPIView):
+    queryset = models.OrderItem.objects.all()
+    serializer_class = serializers.OrderItemSerializer
+
+    def perform_create(self, serializer):
+        return super().perform_create(serializer)
+
+class OrderItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.OrderItem.objects.all()
+    serializer_class = serializers.OrderItemSerializer
