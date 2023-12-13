@@ -13,6 +13,11 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwMjUyMTc3NiwiaWF0IjoxNzAyNDM1Mzc2LCJqdGkiOiI2M2VhODVhN2E3ZWY0ZTFiYjczZTI3NGQ0ZDM2MmNjZSIsInVzZXJfaWQiOjF9.39r7tPp7s3_2YYwDNCXowpQ4Jq_wnAG9erBIRvAM8zc",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyNDM1Njc2LCJpYXQiOjE3MDI0MzUzNzYsImp0aSI6IjU5NWFhYzU5Mjg0OTQxYzE4NGVmOWIwZGYwZjQxMDgxIiwidXNlcl9pZCI6MX0.3fjycmUV5ixHnPfxQjm60V_-AAvnXJBiKxodRKd68Xs"
+}
 """
 from django.contrib import admin
 from django.urls import path, include
