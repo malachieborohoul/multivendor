@@ -28,7 +28,7 @@ class Product(models.Model):
     def __str__(self) -> str:
         return self.title
     
-# Customer ModelModeModelModeModelMode
+# Customer ModelModeModelModeModelMod
 class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mobile = models.PositiveBigIntegerField()
