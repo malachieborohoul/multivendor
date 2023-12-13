@@ -8,7 +8,7 @@ class VendorSerializer(serializers.ModelSerializer):
         
     def __init__(self, *args, **kwargs):
         super(VendorSerializer,self).__init__(*args, **kwargs)
-        self.Meta.depth=1
+        # self.Meta.depth=1
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -18,4 +18,13 @@ class ProductSerializer(serializers.ModelSerializer):
         
     def __init__(self, *args, **kwargs):
         super(ProductSerializer,self).__init__(*args, **kwargs)
-        self.Meta.depth=1
+        # self.Meta.depth=1
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Customer
+        fields =['user', 'mobile']
+        
+    def __init__(self, *args, **kwargs):
+        super(CustomerSerializer,self).__init__(*args, **kwargs)
+        # self.Meta.depth=1 

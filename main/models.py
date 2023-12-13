@@ -19,7 +19,7 @@ class ProductCategory(models.Model):
     
 # Product
 class Product(models.Model):
-    category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, null=True, related_name='category_product')
     vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200)
     detail = models.TextField(null=True)
@@ -44,7 +44,7 @@ class Order(models.Model):
 # OrderItem Model
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
