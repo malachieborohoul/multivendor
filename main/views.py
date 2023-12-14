@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . import serializers
 from . import models
-from rest_framework import generics, permissions, pagination
+from rest_framework import generics, permissions, pagination, viewsets
 # Create your views here.
 
 class VendorList(generics.ListCreateAPIView):
@@ -71,3 +71,13 @@ class OrderItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.OrderItem.objects.all()
     serializer_class = serializers.OrderItemSerializer
 
+
+class CustomerAddressViewSet(viewsets.ModelViewSet):
+    queryset = models.CustomerAddress.objects.all()
+    serializer_class= serializers.CustomerAddressSerializer
+
+    # def get_queryset(self):
+    #     customer_id = self.kwargs['pk']
+    #     customer = models.Customer.objects.get(id=customer_id)
+    #     customer_addresses = models.CustomerAddress.objects.filter(customer=customer)
+    #     return customer_addresses
