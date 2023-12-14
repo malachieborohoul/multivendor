@@ -70,3 +70,4 @@ class OrderItemList(generics.ListCreateAPIView):
 class OrderItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.OrderItem.objects.all()
     serializer_class = serializers.OrderItemSerializer
+
