@@ -56,5 +56,6 @@ class OrderItem(models.Model):
 class CustomerAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='customer_addresses')
     address = models.TextField()
+    default_address=models.BooleanField(default=False)
     def __str__(self) -> str:
         return self.address
