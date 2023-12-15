@@ -81,3 +81,7 @@ class CustomerAddressViewSet(viewsets.ModelViewSet):
     #     customer = models.Customer.objects.get(id=customer_id)
     #     customer_addresses = models.CustomerAddress.objects.filter(customer=customer)
     #     return customer_addresses
+
+class ProductRatingViewSet(viewsets.ModelViewSet):
+    queryset = models.ProductRating.objects.all()
+    serializer_class= serializers.ProductRatingSerializer
