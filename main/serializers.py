@@ -10,7 +10,7 @@ class VendorSerializer(serializers.ModelSerializer):
         super(VendorSerializer,self).__init__(*args, **kwargs)
         # self.Meta.depth=1
 
-# ProductSerializerProductSeri
+# ProductSerializerProductSer
 class ProductSerializer(serializers.ModelSerializer):
     product_ratings= serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
