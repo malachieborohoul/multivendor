@@ -70,4 +70,4 @@ class ProductRating(models.Model):
 
     def __str__(self) -> str:
         return self.reviews
-    
+     
