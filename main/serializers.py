@@ -12,7 +12,7 @@ class VendorSerializer(serializers.ModelSerializer):
 
 # 
 class ProductSerializer(serializers.ModelSerializer):
-    product_ratings= serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    product_ratings= serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = models.Product
         fields =['id','category', 'vendor','title','detail','price', 'product_ratings']
