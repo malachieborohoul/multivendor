@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from rest_framework import routers
-# DefaultRouteDefaultRouteDefa
+# DefaultRouteDefaultRouteDef
 router = routers.DefaultRouter()
 router.register('address', views.CustomerAddressViewSet)
 router.register('productrating', views.ProductRatingViewSet)
