@@ -23,7 +23,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    product_ratings= serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = models.ProductCategory
         fields =['id','title','detail']
