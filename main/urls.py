@@ -10,8 +10,8 @@ urlpatterns=[
     path('vendors/',views.VendorList.as_view() ),
     path('vendors/<int:pk>/',views.VendorDetail.as_view() ),
     # Product Categories
-    path('categories/',views.ProductList.as_view() ),
-    path('categories/<int:pk>/',views.ProductDetail.as_view() ),
+    path('categories/',views.CategoryList.as_view() ),
+    path('categories/<int:pk>/',views.CategoryDetail.as_view() ),
 
      # Products
     path('products/',views.ProductList.as_view() ),
