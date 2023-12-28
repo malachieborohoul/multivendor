@@ -21,7 +21,7 @@ class VendorDetail(generics.RetrieveUpdateDestroyAPIView):
 class ProductList(generics.ListCreateAPIView):
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
-    pagination_class= pagination.LimitOffsetPagination 
+    # pagination_class= pagination.LimitOffsetPagination 
 
     def perform_create(self, serializer):
         return super().perform_create(serializer)
