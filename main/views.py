@@ -21,15 +21,20 @@ class VendorDetail(generics.RetrieveUpdateDestroyAPIView):
 class ProductList(generics.ListCreateAPIView):
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
-    # pagination_class= pagination.LimitOffsetPagination 
+
     def get_queryset(self):
-        qs=super().get_queryset()
-        category=self.request.GET['category']
-        category=models.ProductCategory.objects.get(id=category)
-        qs=qs.filter(category=category)
+        qs = super().get_queryset()
+        category_id = self.request.GET.get('category', None)  # Utilisation de get() avec une valeur par défaut None
+
+        if category_id:
+            try:
+                category = models.ProductCategory.objects.get(id=category_id)
+                qs = qs.filter(category=category)
+            except models.ProductCategory.DoesNotExist:
+                pass  # Gérer la catégorie inexistante ici, si nécessaire
+
         return qs
-    # def perform_create(self, serializer):
-    #     return super().perform_create(serializer)
+
 
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Product.objects.all()

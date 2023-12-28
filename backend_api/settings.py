@@ -45,12 +45,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'backend_api.urls'
@@ -142,9 +143,17 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'main.pagination.CustomPagination',
     'PAGE_SIZE': 1
 }
+CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 
-# CORS_ORIGIN_ALLOW_ALL = True 
-
-CORS_ALLOWED_ORIGINS=[
-    'http://localhost:3000',
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
 ]
+
+# CORS_ALLOWED_ORIGINS=[
+#     'http://127.0.0.1:3000',
+# ]
