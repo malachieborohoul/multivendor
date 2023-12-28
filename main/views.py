@@ -91,7 +91,7 @@ class ProductRatingViewSet(viewsets.ModelViewSet):
 class CategoryList(generics.ListCreateAPIView):
     queryset = models.ProductCategory.objects.all()
     serializer_class = serializers.CategorySerializer
-    pagination_class= pagination.LimitOffsetPagination 
+    # pagination_class= pagination.LimitOffsetPagination 
 
     def perform_create(self, serializer):
         return super().perform_create(serializer)
