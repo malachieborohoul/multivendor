@@ -24,7 +24,7 @@ class ProductList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        category_id = self.request.GET.get('category', None)  # Utilisation de get() avec une valeur par défaut None
+        category_id = self.request.GET.get('category')  # Utilisation de get() avec une valeur par défaut None
 
         if category_id:
             try:

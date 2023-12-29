@@ -73,10 +73,10 @@ class ProductRating(models.Model):
      
 
 # Product Images Model
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_imgs')
-    image  = models.ImageField(upload_to='product_imgs/', null=True)
+# class ProductImage(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_imgs')
+#     image  = models.ImageField(upload_to='product_imgs/', null=True)
     
 
-    def __str__(self) -> str:
-        return self.image.url
+#     def __str__(self) -> str:
+#         return self.image.name
