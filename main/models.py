@@ -71,3 +71,12 @@ class ProductRating(models.Model):
     def __str__(self) -> str:
         return f'{self.rating} - {self.reviews}'
      
+
+# Product Images Model
+class ProductRating(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rating_customers')
+    image  = models.ImageField(upload_to='product_imgs/')
+    
+
+    def __str__(self) -> str:
+        return f'{self.rating} - {self.reviews}'
