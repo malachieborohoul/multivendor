@@ -24,9 +24,17 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     detail = models.TextField(null=True)
     price= models.FloatField()
+    tags = models.TextField(null=True)
+    image  = models.ImageField(upload_to='product_imgs/', null=True)
+
+    
 
     def __str__(self) -> str:
         return self.title
+    
+    def tag_link(self):
+        tagList = self.tags.split(',')
+        print(tagList)
     
 # Customer Model
 class Customer(models.Model):
