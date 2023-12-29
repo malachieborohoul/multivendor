@@ -42,8 +42,8 @@ class TagProductList(generics.ListCreateAPIView):
     def get_queryset(self):
         qs = super().get_queryset()
         tag=self.kwargs['tag']
-        qs = qs.filter(tags_icontains=tag)
-        return qs
+        qs = qs.filter(tags=tag)
+        return qs 
 
 
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):

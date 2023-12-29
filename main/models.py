@@ -31,7 +31,7 @@ class Product(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+     
     def tag_list(self):
         tagList = self.tags.split(',')
         return tagList
