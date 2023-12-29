@@ -10,10 +10,16 @@ class VendorSerializer(serializers.ModelSerializer):
         super(VendorSerializer,self).__init__(*args, **kwargs)
         # self.Meta.depth=1
 
+
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ProductImage
+        fields =['id','product', 'image']
+        
 # 
 class ProductSerializer(serializers.ModelSerializer):
     product_ratings= serializers.StringRelatedField(many=True, read_only=True)
-    product_imgs= serializers.StringRelatedField(many=True, read_only=True)
+    product_imgs = ProductImageSerializer(many=True, read_only=True )
     class Meta:
         model = models.Product
         fields =['id','category', 'vendor','title','detail','price', 'product_ratings', 'product_imgs']
