@@ -15,6 +15,7 @@ urlpatterns=[
 
      # Products
     path('products/',views.ProductList.as_view() ),
+    path('products/<str:tag>',views.TagProductList.as_view() ),
     path('products/<int:pk>/',views.ProductDetail.as_view() ),
     # Customers
     path('customers/',views.CustomerList.as_view() ),
