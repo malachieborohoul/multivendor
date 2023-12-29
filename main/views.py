@@ -53,7 +53,7 @@ class RelatedProductList(generics.ListCreateAPIView):
     def get_queryset(self):
         qs = super().get_queryset()
         product_id=self.kwargs['pk']
-        product = models.Product.objects.filter(id=product_id)
+        product = models.Product.objects.get(id=product_id)
         qs = qs.filter(category = product.category).exclude(id=product_id)
         return qs 
 
