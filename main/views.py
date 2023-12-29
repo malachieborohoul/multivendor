@@ -46,6 +46,17 @@ class TagProductList(generics.ListCreateAPIView):
         return qs 
 
 
+class RelatedProductList(generics.ListCreateAPIView):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        product_id=self.kwargs['pk']
+        product = models.Product.objects.filter(id=product_id)
+        qs = qs.filter(category = product.category).exclude(id=product_id)
+        return qs 
+
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
