@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 # Create your views here.
  
@@ -97,7 +98,10 @@ def customer_login(request):
 
 @csrf_exempt
 def customer_register(request):
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
         username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
