@@ -116,7 +116,6 @@ def customer_register(request):
                 password=password,
             )
             if user:
-                try:
                     # Create customer
                     customer = models.Customer.objects.create(
                         user=user,
@@ -128,22 +127,25 @@ def customer_register(request):
                         'customer':customer.id,
                         'msg':"Thank you for your registartion. Please login",
                     }
-                except IntegrityError:
-                    msg={
-                        'bool':False,
-                        'msg':'Mobile already exist !!!'
-                        }
+               
 
             else:
                 msg={
                     'bool':False,
                     'msg':'Oops... Something went wrong!!!'
                 }
-        except IntegrityError:
-            msg={
-                    'bool':False,
-                    'msg':'Username already exist !!!'
-                }
+        except IntegrityError as e:
+            if "username" in str(e):
+                msg={
+                        'bool':False,
+                        'msg': "Username is already taken"
+                    }
+            elif "mobile" in str(e):
+                msg={
+                        'bool':False,
+                        'msg': "Mobile is in use"
+                    }
+            
 
         return JsonResponse(msg)
 class OrderList(generics.ListCreateAPIView):
