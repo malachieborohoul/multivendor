@@ -5,6 +5,7 @@ from rest_framework import generics, permissions, pagination, viewsets
 from rest_framework.response import Response
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate
 
 # Create your views here.
  
@@ -79,10 +80,19 @@ class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
 
 @csrf_exempt
 def customer_login(request):
-        msg = {
-            'bool': True,
-            'post': request.POST
-        }
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            msg={
+                'bool':True,
+                'user':user.username
+            }
+        else:
+             msg={
+                'bool':False,
+                'msg':'Invalid Username or Password'
+            }
         return JsonResponse(msg)
 
 class OrderList(generics.ListCreateAPIView):
