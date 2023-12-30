@@ -103,11 +103,17 @@ def customer_register(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
+        user = User.objects.create(
+            first_name=firstname,
+            last_name=lastname,
+            username=username,
+            email=email,
+            password=password,
+        )
         if user:
             msg={
                 'bool':True,
-                'user':user.username
+                'customer':user.id
             }
         else:
              msg={
