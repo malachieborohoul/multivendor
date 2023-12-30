@@ -3,10 +3,11 @@ from . import serializers
 from . import models
 from rest_framework import generics, permissions, pagination, viewsets
 from rest_framework.response import Response
-
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-# Create your views here.
 
+# Create your views here.
+ 
 class VendorList(generics.ListCreateAPIView):
     queryset = models.Vendor.objects.all()
     serializer_class = serializers.VendorSerializer
@@ -75,13 +76,14 @@ class CustomerList(generics.ListCreateAPIView):
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Customer.objects.all()
     serializer_class = serializers.CustomerSerializer
-csrf_exempt
+
+@csrf_exempt
 def customer_login(request):
         msg = {
             'bool': True,
             'post': request.POST
         }
-        return Response(msg)
+        return JsonResponse(msg)
 
 class OrderList(generics.ListCreateAPIView):
     queryset = models.Order.objects.all()

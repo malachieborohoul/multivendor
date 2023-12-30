@@ -22,11 +22,11 @@ urlpatterns=[
     path('customers/',views.CustomerList.as_view() ),
     path('customers/<int:pk>/',views.CustomerDetail.as_view() ),
     path('customers/login/',views.customer_login, name='customer_login' ),
-    # Order
+    # Order 
     path('orders/',views.OrderList.as_view() ),
     path('orders/<int:pk>/',views.OrderDetail.as_view() ),
 
-    # OrderItem
+    # OrderItem 
     path('order-items/',views.OrderItemList.as_view() ),
     path('order-items/<int:pk>/',views.OrderItemDetail.as_view() )
 ]
