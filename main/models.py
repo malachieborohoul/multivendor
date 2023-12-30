@@ -24,9 +24,17 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     detail = models.TextField(null=True)
     price= models.FloatField()
+    tags = models.TextField(null=True)
+    # image  = models.ImageField(upload_to='product_imgs/', null=True)
+
+    
 
     def __str__(self) -> str:
         return self.title
+     
+    def tag_list(self):
+        tagList = self.tags.split(',')
+        return tagList
     
 # Customer Model
 class Customer(models.Model):
@@ -73,10 +81,10 @@ class ProductRating(models.Model):
      
 
 # Product Images Model
-# class ProductImage(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_imgs')
-#     image  = models.ImageField(upload_to='product_imgs/', null=True)
+class ProductRating(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rating_customers')
+    image  = models.ImageField(upload_to='product_imgs/')
     
 
-#     def __str__(self) -> str:
-#         return self.image.name
+    def __str__(self) -> str:
+        return f'{self.rating} - {self.reviews}'
