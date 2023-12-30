@@ -77,7 +77,6 @@ class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.CustomerSerializer
 csrf_exempt
 def customer_login(request):
-    if request.is_ajax():
         msg = {
             'bool': True,
             'post': request.POST
