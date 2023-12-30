@@ -130,8 +130,8 @@ def customer_register(request):
                     }
                 except IntegrityError:
                     msg={
-                            'bool':False,
-                            'msg':'Mobile already exist !!!'
+                        'bool':False,
+                        'msg':'Mobile already exist !!!'
                         }
 
             else:
