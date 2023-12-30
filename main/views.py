@@ -95,6 +95,22 @@ def customer_login(request):
             }
         return JsonResponse(msg)
 
+@csrf_exempt
+def customer_register(request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            msg={
+                'bool':True,
+                'user':user.username
+            }
+        else:
+             msg={
+                'bool':False,
+                'msg':'Invalid Username or Password'
+            }
+        return JsonResponse(msg)
 class OrderList(generics.ListCreateAPIView):
     queryset = models.Order.objects.all()
     serializer_class = serializers.OrderSerializer
