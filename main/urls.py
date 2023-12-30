@@ -21,6 +21,7 @@ urlpatterns=[
     # Customers
     path('customers/',views.CustomerList.as_view() ),
     path('customers/<int:pk>/',views.CustomerDetail.as_view() ),
+    path('customers/login/',views.CustomerDetail.as_view() ),
     # Order
     path('orders/',views.OrderList.as_view() ),
     path('orders/<int:pk>/',views.OrderDetail.as_view() ),
