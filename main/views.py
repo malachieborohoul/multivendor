@@ -106,7 +106,7 @@ def customer_register(request):
         mobile = request.POST.get('mobile')
         user = User.objects.create(
             first_name=firstname,
-            last_name=lastname,
+            last_name=lastname, 
             username=username,
             email=email,
             password=password,
