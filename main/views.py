@@ -131,7 +131,7 @@ def customer_register(request):
                 )
                 
                 # Create customer
-                customer = models.Customeobjects.create(
+                customer = models.Customer.objects.create(
                     user=user,
                     mobile=mobile,
                     )
