@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import serializers
 from . import models
 from rest_framework import generics, permissions, pagination, viewsets
-from rest_framework.response import Response
+from django.db import IntegrityError
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
@@ -84,6 +84,8 @@ def customer_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
+
+
         if user:
             msg={
                 'bool':True,
@@ -104,30 +106,45 @@ def customer_register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         mobile = request.POST.get('mobile')
-        user = User.objects.create(
-            first_name=firstname,
-            last_name=lastname, 
-            username=username,
-            email=email,
-            password=password,
-        )
-        if user:
-            # Create customer
-            customer = models.Customer.objects.create(
-                user=user,
-                mobile=mobile,
-                )
+
+        try:
+            user = User.objects.create(
+                first_name=firstname,
+                last_name=lastname, 
+                username=username,
+                email=email,
+                password=password,
+            )
+            if user:
+                try:
+                    # Create customer
+                    customer = models.Customer.objects.create(
+                        user=user,
+                        mobile=mobile,
+                        )
+                    msg={
+                        'bool':True,
+                        'user':user.id,
+                        'customer':customer.id,
+                        'msg':"Thank you for your registartion. Please login",
+                    }
+                except IntegrityError:
+                    msg={
+                            'bool':False,
+                            'msg':'Mobile already exist !!!'
+                        }
+
+            else:
+                msg={
+                    'bool':False,
+                    'msg':'Oops... Something went wrong!!!'
+                }
+        except IntegrityError:
             msg={
-                'bool':True,
-                'user':user.id,
-                'customer':customer.id,
-                'msg':"Thank you for your registartion. Please login",
-            }
-        else:
-             msg={
-                'bool':False,
-                'msg':'Oops... Something went wrong!!!'
-            }
+                    'bool':False,
+                    'msg':'Username already exist !!!'
+                }
+
         return JsonResponse(msg)
 class OrderList(generics.ListCreateAPIView):
     queryset = models.Order.objects.all()
