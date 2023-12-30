@@ -111,6 +111,8 @@ def customer_register(request):
             password=password,
         )
         if user:
+            # Create customer
+            customer = models.Customer.objects.create(user)
             msg={
                 'bool':True,
                 'customer':user.id
