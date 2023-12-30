@@ -108,44 +108,45 @@ def customer_register(request):
         mobile = request.POST.get('mobile')
 
         try:
-            user = User.objects.create(
-                first_name=firstname,
-                last_name=lastname, 
-                username=username,
-                email=email,
-                password=password,
-            )
-            if user:
-                    # Create customer
-                    customer = models.Customer.objects.create(
-                        user=user,
-                        mobile=mobile,
-                        )
-                    msg={
-                        'bool':True,
-                        'user':user.id,
-                        'customer':customer.id,
-                        'msg':"Thank you for your registartion. Please login",
-                    }
-               
+            existing_user = User.objects.filter(username=username).exists()
+            existing_mobile = models.Customer.objects.filter(mobile=mobile).exists()
 
-            else:
+            if existing_user:
                 msg={
                     'bool':False,
-                    'msg':'Oops... Something went wrong!!!'
+                    'msg':'Username already exist !!!'
                 }
-        except IntegrityError as e:
-            if "username" in str(e):
+            elif existing_mobile:
+                 msg={
+                    'bool':False,
+                    'msg':'Mobile already exist !!!'
+                    }
+            else:
+                user = User.objects.create(
+                    first_name=firstname,
+                    last_name=lastname, 
+                    username=username,
+                    email=email,
+                    password=password,
+                )
+                
+                # Create customer
+                customer = models.Customeobjects.create(
+                    user=user,
+                    mobile=mobile,
+                    )
+                msg={
+                    'bool':True,
+                    'user':user.id,
+                    'customer':customer.id,
+                    'msg':"Thank you for youregistartion. Please login",
+                 }
+               
+        except IntegrityError:
                 msg={
                         'bool':False,
-                        'msg': "Username is already taken"
+                        'msg':'Ooop something went wrong'
                     }
-            elif "mobile" in str(e):
-                msg={
-                        'bool':False,
-                        'msg': "Mobile is in use"
-                    }
-            
 
         return JsonResponse(msg)
 class OrderList(generics.ListCreateAPIView):
