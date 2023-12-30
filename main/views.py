@@ -103,6 +103,7 @@ def customer_register(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        mobile = request.POST.get('mobile')
         user = User.objects.create(
             first_name=firstname,
             last_name=lastname,
@@ -112,15 +113,19 @@ def customer_register(request):
         )
         if user:
             # Create customer
-            customer = models.Customer.objects.create(user)
+            customer = models.Customer.objects.create(
+                user=user,
+                mobile=mobile,
+                )
             msg={
                 'bool':True,
-                'customer':user.id
+                'user':user.id,
+                'customer':customer.id
             }
         else:
              msg={
                 'bool':False,
-                'msg':'Invalid Username or Password'
+                'msg':'Oops... Something went wrong!!!'
             }
         return JsonResponse(msg)
 class OrderList(generics.ListCreateAPIView):
