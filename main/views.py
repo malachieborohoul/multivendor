@@ -120,7 +120,8 @@ def customer_register(request):
             msg={
                 'bool':True,
                 'user':user.id,
-                'customer':customer.id
+                'customer':customer.id,
+                'msg':"Thank you for your registartion. Please login",
             }
         else:
              msg={
