@@ -12,5 +12,6 @@ class CustomerAdmin(admin.ModelAdmin):
 admin.site.register(models.Customer, CustomerAdmin)   
 admin.site.register(models.Order)   
 admin.site.register(models.OrderItem)    
+admin.site.register(models.ProductImage)    
 # admin.site.register(models.CustomerAddress)     
 # admin.site.register(models.ProductRating)     
