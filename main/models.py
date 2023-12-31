@@ -83,7 +83,7 @@ class ProductRating(models.Model):
 
 # Product Images Model
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_imgs')
     image  = models.ImageField(upload_to='product_imgs/')
     
 
