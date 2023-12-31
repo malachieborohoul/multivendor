@@ -88,4 +88,4 @@ class ProductImage(models.Model):
     
 
     def __str__(self) -> str:
-        return f'{self.rating} - {self.reviews}'
+        return self.image.url
